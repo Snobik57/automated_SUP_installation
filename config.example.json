@@ -1,0 +1,48 @@
+{
+  "monitoring": {
+    "enabled": true,
+    "mode": "online",
+    "host": {
+      "host": "10.10.10.11",
+      "user": "root",
+      "port": 22,
+      "ssh_key": "/home/user/.ssh/id_rsa"
+    },
+    "online_url": "https://s3.printum.io/box/monitoring/install.sh",
+    "env": {
+      "MON_HOSTNAME": "monitoring.example.org",
+      "PRINTUM_VERSION": "4.4.64",
+      "MON_ADMIN_PASSWORD": "StrongPassword",
+      "ENV_VAULT_PASSWORD": "VaultPassword"
+    },
+    "health_url": "http://monitoring.example.org:8000/health/",
+    "health_timeout_sec": 900
+  },
+  "printmanager": {
+    "enabled": true,
+    "mode": "online",
+    "host": {
+      "host": "10.10.10.12",
+      "user": "root",
+      "port": 22,
+      "ssh_key": "/home/user/.ssh/id_rsa"
+    },
+    "online_url": "https://s3.printum.io/distrib/printum-printmanager/install.sh",
+    "env": {
+      "MONITORING_ADDRESS": "10.10.10.11",
+      "MON_HOSTNAME": "printmanager.example.org",
+      "PRINTMANAGER_VERSION": "4.4.34",
+      "PM_ADMIN_PASSWORD": "StrongPassword",
+      "PM_HTTP_PORT": "8005",
+      "PM_HTTPS_PORT": "8443",
+      "ENV_VAULT_PASSWORD": "VaultPassword"
+    },
+    "health_url": "http://127.0.0.1:8005/health/",
+    "health_timeout_sec": 900
+  },
+  "post_setup": {
+    "enabled": false,
+    "tool": "selenium",
+    "note": "Future extension point for browser-based setup automation"
+  }
+}
